@@ -18,6 +18,7 @@ This is not a guided lab or a walkthrough — every component was configured man
 | Windows attack detection | [Day 4](./Day04-Windows-Attack-Simulation/) |
 | KQL threat hunting queries | [Day 5](./Day05-KQL-Threat-Hunting/) |
 | SOAR automation playbook | [Day 6](./Day06-SOAR-Automation/) |
+| SOC Dashboard | [Day 7](./Day07-SOC-Dashboard/) |
 | All KQL queries in one place | [Analytics Rules](#analytics-rules) + [Hunting Queries](#threat-hunting-queries) |
 | MITRE ATT&CK coverage | [MITRE ATT&CK Coverage](#mitre-attck-coverage) |
 | Screenshots | [Day01](./Day01-Environment-Setup/screenshots/) through [Day07](./Day07-SOC-Dashboard/screenshots/) |
