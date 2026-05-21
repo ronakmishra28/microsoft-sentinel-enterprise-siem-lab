@@ -12,15 +12,15 @@ This is not a guided lab or a walkthrough — every component was configured man
 
 | If you want to see... | Go to... |
 |----------------------|----------|
-| How the lab was set up | [Day 1](#day-1----environment-setup--windows-endpoint) |
-| Multi-endpoint onboarding + first attack | [Day 2](#day-2----multi-endpoint-onboarding--attack-simulation) |
-| Incident response investigation | [Day 3](#day-3----threat-hunting--incident-response) + [IR Report](./Day03-Threat-Hunting-Incident-Response/IR-2026-001-SSH-Brute-Force.pdf) |
-| Windows attack detection | [Day 4](#day-4----windows-attack-simulation) |
-| KQL threat hunting queries | [Day 5](#day-5----kql-threat-hunting) |
-| SOAR automation playbook | [Day 6](#day-6----soar-automation) |
+| How the lab was set up | [Day 1](./Day01-Environment-Setup/) |
+| Multi-endpoint onboarding + first attack | [Day 2](./Day02-Multi-Endpoint-Attack-Simulation/) |
+| Incident response investigation | [Day 3](./Day03-Threat-Hunting-Incident-Response/) + [IR Report](./Day03-Threat-Hunting-Incident-Response/screenshots/IR-2026-001-SSH-Brute-Force.pdf) |
+| Windows attack detection | [Day 4](./Day04-Windows-Attack-Simulation/) |
+| KQL threat hunting queries | [Day 5](./Day05-KQL-Threat-Hunting/) |
+| SOAR automation playbook | [Day 6](./Day06-SOAR-Automation/) |
 | All KQL queries in one place | [Analytics Rules](#analytics-rules) + [Hunting Queries](#threat-hunting-queries) |
 | MITRE ATT&CK coverage | [MITRE ATT&CK Coverage](#mitre-attck-coverage) |
-| Screenshots | [Day01](./Day01-Environment-Setup/) through [Day07](./Day07-SOC-Dashboard/) |
+| Screenshots | [Day01](./Day01-Environment-Setup/screenshots/) through [Day07](./Day07-SOC-Dashboard/screenshots/) |
 
 ---
 
