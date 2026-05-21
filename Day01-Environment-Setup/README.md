@@ -24,7 +24,7 @@ The first step is creating a Log Analytics Workspace and enabling Microsoft Sent
 
 **Why this matters:** Every SOC analyst working with Sentinel needs to understand that the workspace is the foundation. When you run KQL queries, you are querying the Log Analytics database. When Sentinel detects threats, it reads from the same database.
 
-![Sentinel Workspace Created](./01-sentinel-workspace-created.png)
+![Sentinel Workspace Created](./screenshots/01-sentinel-workspace-created.png)
 > Microsoft Sentinel workspace sc200-lab deployed successfully in resource group sc200-rg, East US region.
 
 ---
@@ -34,7 +34,7 @@ The Windows 11 Enterprise VM runs locally inside Parallels on a MacBook. Azure h
 
 **Why this matters:** In real enterprise environments, most servers are on-premises, not in Azure. Azure Arc is how organizations connect their existing infrastructure to Azure security tools like Sentinel without migrating to the cloud. This is a core hybrid cloud skill.
 
-![Azure Arc Connected](./02-azure-arc-connected.png)
+![Azure Arc Connected](./screenshots/02-azure-arc-connected.png)
 > Windows 11 Enterprise VM (RONAKMISHRA345C) successfully registered in Azure Arc. Status shows Connected.
 
 ---
@@ -44,7 +44,7 @@ Once the VM is registered in Azure Arc, the Azure Monitor Agent (AMA) is deploye
 
 **Why this matters:** AMA replaced the older Log Analytics Agent (MMA). Understanding AMA is essential because it is the current standard for log collection in Microsoft environments. Every endpoint you want to monitor must have AMA installed.
 
-![AMA Agent Installed](./03-ama-agent-installed.png)
+![AMA Agent Installed](./screenshots/03-ama-agent-installed.png)
 > Azure Monitor Windows Agent installed successfully on RONAKMISHRA345C. Extension status shows Succeeded.
 
 ---
@@ -54,7 +54,7 @@ A Data Collection Rule (DCR) tells AMA exactly what to collect and where to send
 
 **Why this matters:** DCRs are the configuration layer of the log pipeline. You can have multiple DCRs for different data sources — one for Windows Security Events, one for Linux Syslog, one for performance counters. Understanding DCRs is essential for configuring what gets monitored.
 
-![DCR Configured](./04-dcr-configured.png)
+![DCR Configured](./screenshots/04-dcr-configured.png)
 > Data Collection Rule sc200-windows-dcr configured to collect Windows Security Events from RONAKMISHRA345C and send to sc200-lab workspace.
 
 ---
@@ -64,7 +64,7 @@ In addition to the DCR, the Windows Security Events via AMA connector is enabled
 
 **Why this matters:** Sentinel data connectors are how different data sources get ingested. The connector handles the normalization of raw log data into structured tables that KQL can query efficiently.
 
-![Windows Security Events Connector](./05-windows-security-events-connector.png)
+![Windows Security Events Connector](./screenshots/05-windows-security-events-connector.png)
 > Windows Security Events via AMA connector enabled in Microsoft Sentinel. Status shows Connected.
 
 ---
@@ -74,7 +74,7 @@ After the pipeline is configured, the first verification step is confirming that
 
 **Why this matters:** Never assume the pipeline is working. Always verify. In real SOC environments, broken log pipelines are a common issue and a gap in coverage means missed detections.
 
-![First Logs in Sentinel](./06-first-logs-in-sentinel.png)
+![First Logs in Sentinel](./screenshots/06-first-logs-in-sentinel.png)
 > SecurityEvent table showing live Windows security events from RONAKMISHRA345C flowing into Sentinel. Log pipeline confirmed working.
 
 ---
@@ -88,7 +88,7 @@ SecurityEvent
 | order by Count desc
 ```
 
-![KQL Query 1 — Event Summary](./07-kql-query1-event-summary.png)
+![KQL Query 1 — Event Summary](./screenshots/07-kql-query1-event-summary.png)
 > KQL query returning all SecurityEvent EventIDs with counts. Shows distribution of event types including logon events, process creation, and privilege assignment.
 
 ---
@@ -109,7 +109,7 @@ SecurityEvent
 - IpAddress — where the attempt came from
 - Logon Type — 3 = network logon (RDP/SMB), 2 = interactive
 
-![KQL Query 2 — Failed Logons](./08-kql-query2-failed-logons.png)
+![KQL Query 2 — Failed Logons](./screenshots/08-kql-query2-failed-logons.png)
 > KQL query showing EventID 4625 failed logon events. Source IP and targeted account visible for each attempt.
 
 ---
@@ -130,7 +130,7 @@ SecurityEvent
 - CommandLine — the full command with arguments
 - Account — which user ran it
 
-![KQL Query 3 — Process Creation](./09-kql-query3-process-creation.png)
+![KQL Query 3 — Process Creation](./screenshots/09-kql-query3-process-creation.png)
 > KQL query showing EventID 4688 process creation events with full command line visible. Foundation for detecting suspicious command execution.
 
 ---
@@ -138,7 +138,7 @@ SecurityEvent
 ### Step 10 — Simulated Brute Force Detected
 A simulated brute force attack is performed against the Windows VM using the net use command to generate multiple failed logon attempts (EventID 4625). These events appear immediately in Sentinel confirming end-to-end detection capability.
 
-![Brute Force Detected 4625](./10-brute-force-detected-4625.png)
+![Brute Force Detected 4625](./screenshots/10-brute-force-detected-4625.png)
 > Multiple EventID 4625 failed logon events detected in Sentinel following simulated brute force. Source IP and targeted account confirmed visible in logs.
 
 ---

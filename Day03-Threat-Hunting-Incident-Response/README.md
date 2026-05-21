@@ -52,7 +52,7 @@ The multi-wave pattern is characteristic of automated brute force tools that pau
 
 **Why this matters:** Building a timeline is the first step in any incident investigation. It establishes when the attack started, how long it lasted, and whether there were patterns that indicate attacker behavior.
 
-![Attack Timeline Chart](./01-attack-timeline-chart.png)
+![Attack Timeline Chart](./screenshots/01-attack-timeline-chart.png)
 > KQL time chart showing 3 distinct waves of SSH brute force activity. Wave 2 shows highest intensity at 120 attempts. Attack spans approximately 28 minutes.
 
 ---
@@ -77,7 +77,7 @@ Syslog
 
 **Why this matters:** Identifying the exact source IP and targeted account is essential for containment. You cannot block the right IP or protect the right account without this information. In real incidents, the attacker IP would be looked up in threat intelligence databases to determine if it is a known malicious actor.
 
-![Attacker IP and Username](./02-attacker-ip-username.png)
+![Attacker IP and Username](./screenshots/02-attacker-ip-username.png)
 > KQL query results confirming attacker IP (10.0.0.100), targeted username (ronak), and total attempt count (260). Attribution confirmed.
 
 ---
@@ -100,7 +100,7 @@ This confirms the attack failed completely — the attacker did not gain access 
 
 **Why this matters:** Determining whether an attack succeeded changes the severity of the response. A failed brute force requires containment. A successful one requires full incident response including password resets, forensic investigation of attacker activity, and potential breach notification.
 
-![Successful Logins Check](./03-successful-logins-check.png)
+![Successful Logins Check](./screenshots/03-successful-logins-check.png)
 > KQL query showing zero successful authentication events from attacker IP during the attack window. Attack confirmed unsuccessful — no compromise occurred.
 
 ---
@@ -118,7 +118,7 @@ sudo ufw status
 
 **Why this matters:** Containment is the most time-critical phase of incident response. Every second the attacker IP remains unblocked is another opportunity for a successful breach. Speed of containment directly impacts blast radius.
 
-![Attacker IP Blocked](./04-attacker-ip-blocked.png)
+![Attacker IP Blocked](./screenshots/04-attacker-ip-blocked.png)
 > UFW deny rule deployed on Ubuntu endpoint. Rule shows: DENY IN from 10.0.0.100 to any port 22. Containment actioned.
 
 ---
@@ -135,7 +135,7 @@ ssh ronak@10.0.0.33
 
 **Why this matters:** Never assume a containment action worked. Always verify. In real SOC environments, failed containment actions due to misconfiguration are a documented failure mode. Verification closes the loop on the incident response process.
 
-![Attack Blocked Confirmed](./05-attack-blocked-confirmed.png)
+![Attack Blocked Confirmed](./screenshots/05-attack-blocked-confirmed.png)
 > SSH connection attempt from Kali Linux (10.0.0.100) to Ubuntu (10.0.0.33) timing out after UFW rule deployment. Containment confirmed effective.
 
 ---

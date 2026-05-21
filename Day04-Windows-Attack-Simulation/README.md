@@ -33,7 +33,7 @@ nmap -sV -p 1-1000 10.0.0.32
 
 **MITRE ATT&CK:** T1046 — Network Service Discovery
 
-![Kali Nmap Windows Scan](./01-kali-nmap-windows-scan.png)
+![Kali Nmap Windows Scan](./screenshots/01-kali-nmap-windows-scan.png)
 > Nmap scan results from Kali Linux against Windows VM (10.0.0.32). Ports 445 (SMB) and 3389 (RDP) confirmed open — attack surface identified.
 
 ---
@@ -55,7 +55,7 @@ hydra -l ronakmishra -P /usr/share/wordlists/rockyou.txt rdp://10.0.0.32
 
 **MITRE ATT&CK:** T1110 — Brute Force
 
-![Windows RDP Brute Force Detected](./02-windows-rdp-brute-force-detected.png)
+![Windows RDP Brute Force Detected](./screenshots/02-windows-rdp-brute-force-detected.png)
 > Sentinel Logs showing 14 EventID 4625 failed logon events from 10.0.0.100 against Windows endpoint. RDP brute force confirmed detected.
 
 ---
@@ -73,7 +73,7 @@ SecurityEvent
 
 **Why threshold of 5:** RDP brute force tools typically fire faster than SSH brute force tools. A lower threshold catches attacks earlier without generating too many false positives from legitimate users forgetting their passwords.
 
-![Windows Analytics Rule Query](./03-windows-analytics-rule-query.png)
+![Windows Analytics Rule Query](./screenshots/03-windows-analytics-rule-query.png)
 > KQL query for RDP brute force detection returning results. Source IP 10.0.0.100 shows 14 failed logons against ronakmishra account on RONAKMISHRA345C.
 
 ---
@@ -83,7 +83,7 @@ After creating the RDP brute force rule, the Analytics page now shows two active
 
 **Why this matters:** Building a detection library is a core responsibility of a SOC engineer. Each analytics rule covers a specific attack pattern. Over time, a mature SOC builds hundreds of rules covering the full MITRE ATT&CK matrix.
 
-![Both Analytics Rules Active](./04-both-analytics-rules-active.png)
+![Both Analytics Rules Active](./screenshots/04-both-analytics-rules-active.png)
 > Sentinel Analytics page showing SSH Brute Force Attack Detected and RDP Brute Force Attack Detected rules both active and enabled.
 
 ---
@@ -108,7 +108,7 @@ Each command generates EventID 4688 (process creation) in the Windows Security E
 
 **MITRE ATT&CK:** T1082 — System Information Discovery, T1087 — Account Discovery
 
-![Recon Commands Detected](./05-recon-commands-detected.png)
+![Recon Commands Detected](./screenshots/05-recon-commands-detected.png)
 > Sentinel Logs showing EventID 4688 process creation events for whoami, net user, and ipconfig commands on RONAKMISHRA345C. Full command line visible in CommandLine field.
 
 ---
@@ -126,7 +126,7 @@ SecurityEvent
 
 **Why this matters:** This rule demonstrates detection engineering — building a query that catches real attacker behavior while minimizing false positives. The has_any operator allows matching multiple suspicious commands in a single rule without writing separate rules for each.
 
-![Recon Analytics Rule](./06-recon-analytics-rule.png)
+![Recon Analytics Rule](./screenshots/06-recon-analytics-rule.png)
 > Suspicious Reconnaissance Commands Detected analytics rule configuration. Severity set to Medium, MITRE T1082, runs every 5 minutes.
 
 ---
@@ -140,7 +140,7 @@ All three custom analytics rules are now active in Sentinel, providing coverage 
 | RDP Brute Force Attack Detected | High | T1110 | Windows |
 | Suspicious Reconnaissance Commands Detected | Medium | T1082 | Windows |
 
-![Three Analytics Rules Active](./07-three-analytics-rules-active.png)
+![Three Analytics Rules Active](./screenshots/07-three-analytics-rules-active.png)
 > Sentinel Analytics page showing all three custom detection rules active. Full coverage across SSH brute force, RDP brute force, and reconnaissance detection.
 
 ---

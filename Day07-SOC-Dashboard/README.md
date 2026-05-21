@@ -58,7 +58,7 @@ SecurityEvent
 
 **What this shows:** The ronakmishra account has 14 failed logon attempts — consistent with the RDP brute force simulation from Day 4. In a real environment, an analyst would investigate any account showing an unusual number of failures.
 
-![Dashboard Overview](./01-dashboard-overview.png)
+![Dashboard Overview](./screenshots/01-dashboard-overview.png)
 > Dashboard header with key metrics table showing 3 incidents, 2 endpoints, 3 rules, 4 hunting queries, and 1 SOAR playbook. Section 1 bar chart showing 14 failed logons for ronakmishra account from Day 4 RDP brute force simulation.
 
 ---
@@ -90,7 +90,7 @@ Syslog
 
 **What this shows:** 10.0.0.100 (Kali Linux) generated all 751 failed attempts against the ronak Ubuntu endpoint — single source IP dominance is a clear indicator of targeted automated brute force.
 
-![SSH Timeline and Attacker IPs](./02-dashboard-ssh-timeline-attackerip.png)
+![SSH Timeline and Attacker IPs](./screenshots/02-dashboard-ssh-timeline-attackerip.png)
 > Section 2 line chart showing 751 SSH brute force attempts over time with visible attack spike. Section 3 grid showing 10.0.0.100 as sole attacker IP with 751 total attempts against ronak endpoint.
 
 ---
@@ -115,7 +115,7 @@ SecurityEvent
 
 **Why this matters:** Understanding the baseline event distribution helps analysts identify anomalies. If EventID 4625 suddenly spikes to 50k while normally sitting at 4.63k, that's an immediate red flag. This chart establishes the baseline.
 
-![Windows Event Distribution](./03-dashboard-windows-events.png)
+![Windows Event Distribution](./screenshots/03-dashboard-windows-events.png)
 > Section 4 pie chart showing 18.6k total Windows security events. Even distribution across EventID 4688 (process creation), 4672 (privileges), 4625 (failed logons), and 4624 (successful logons).
 
 ---
@@ -135,7 +135,7 @@ SecurityEvent
 
 **What this shows:** All recon command executions from Day 4 simulation — whoami, ipconfig, net user commands with exact timestamps and the RONAKMISHRA345C\ronakmishra account context. In a real incident, this grid would show an analyst exactly what commands a threat actor ran and in what sequence.
 
-![Recon Commands Detected](./04-dashboard-recon-commands.png)
+![Recon Commands Detected](./screenshots/04-dashboard-recon-commands.png)
 > Section 5 grid showing all reconnaissance commands detected on RONAKMISHRA345C. whoami, ipconfig, net user, and cmd.exe executions visible with timestamps and account context from Day 4 simulation.
 
 ---
@@ -157,7 +157,7 @@ SecurityIncident
 
 **Why this matters:** In a real SOC, this section would be the first thing an analyst checks at the start of their shift. It provides an immediate overview of what needs attention, prioritized by severity and creation time.
 
-![Active Incidents](./05-dashboard-incidents.png)
+![Active Incidents](./screenshots/05-dashboard-incidents.png)
 > Section 6 incidents grid showing 4 active Sentinel incidents. SSH Brute Force incidents (High) and Suspicious Reconnaissance Commands incidents (Medium) with creation timestamps and status.
 
 ---

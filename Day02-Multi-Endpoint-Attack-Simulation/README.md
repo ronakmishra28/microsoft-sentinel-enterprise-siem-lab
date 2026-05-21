@@ -25,7 +25,7 @@ The Ubuntu 22.04 VM is connected to Azure Arc using the same process as the Wind
 
 **Why this matters:** Most enterprise environments run a mix of Windows and Linux servers. A SOC analyst must be able to monitor both. Adding the Ubuntu VM creates a realistic multi-OS environment.
 
-![Ubuntu Arc Connected](./01-ubuntu-arc-connected.png)
+![Ubuntu Arc Connected](./screenshots/01-ubuntu-arc-connected.png)
 > Ubuntu 22.04 VM (ronak) successfully registered in Azure Arc. Arc agent installed and reporting Connected status.
 
 ---
@@ -35,7 +35,7 @@ With both VMs connected to Azure Arc, the Azure Arc Machines page now shows two 
 
 **Why this matters:** This screenshot demonstrates enterprise-scale endpoint coverage. In a real SOC, you would see hundreds or thousands of machines in this view. Having multiple endpoints in a single Sentinel workspace is the foundation of centralized security monitoring.
 
-![All Endpoints Arc Connected](./02-all-endpoints-arc.png)
+![All Endpoints Arc Connected](./screenshots/02-all-endpoints-arc.png)
 > Azure Arc Machines page showing both endpoints connected — RONAKMISHRA345C (Windows 11) and ronak (Ubuntu 22.04). Both show Connected status.
 
 ---
@@ -45,7 +45,7 @@ The Azure Monitor Linux Agent is installed on the Ubuntu VM. This is the equival
 
 **Why this matters:** Linux uses Syslog as its primary logging mechanism. Authentication events including SSH login attempts are logged to /var/log/auth.log and forwarded via Syslog. AMA captures these and sends them to Sentinel.
 
-![Ubuntu AMA Installed](./03-ubuntu-ama-installed.png)
+![Ubuntu AMA Installed](./screenshots/03-ubuntu-ama-installed.png)
 > Azure Monitor Linux Agent installed successfully on Ubuntu VM ronak. Extension status shows Succeeded.
 
 ---
@@ -55,7 +55,7 @@ The sc200-linux-dcr Data Collection Rule is configured to collect Syslog data fr
 
 **Why this matters:** Linux Syslog has multiple facilities — authpriv handles authentication, daemon handles background services, kern handles kernel messages. Configuring the DCR to collect authpriv specifically ensures SSH authentication attempts are captured without ingesting unnecessary data.
 
-![DCR Overview](./04-dcr-overview.png)
+![DCR Overview](./screenshots/04-dcr-overview.png)
 > Data Collection Rule overview showing both sc200-windows-dcr and sc200-linux-dcr configured. Linux DCR collecting Syslog from Ubuntu endpoint.
 
 ---
@@ -71,7 +71,7 @@ Syslog
 | order by TimeGenerated desc
 ```
 
-![Ubuntu Syslog in Sentinel](./05-ubuntu-syslog-sentinel.png)
+![Ubuntu Syslog in Sentinel](./screenshots/05-ubuntu-syslog-sentinel.png)
 > Syslog table in Sentinel showing live events from Ubuntu endpoint ronak. Authentication events confirmed flowing into workspace.
 
 ---
@@ -91,7 +91,7 @@ sshd[1234]: Failed password for ronak from 10.0.0.100 port 54321 ssh2
 
 **Why this matters:** SSH brute force is one of the most common real-world attacks. Any Linux server with SSH exposed to the internet receives hundreds of brute force attempts daily. This simulation recreates exactly what a SOC analyst would see in production.
 
-![Kali Brute Force Detected in Sentinel](./06-kali-brute-force-detected-sentinel.png)
+![Kali Brute Force Detected in Sentinel](./screenshots/06-kali-brute-force-detected-sentinel.png)
 > Sentinel Logs showing 260 failed SSH authentication attempts from Kali Linux (10.0.0.100) against Ubuntu endpoint (10.0.0.33). Attack confirmed detected in real time.
 
 ---
@@ -105,7 +105,7 @@ A custom scheduled analytics rule is created to automatically detect SSH brute f
 
 **Why this matters:** Analytics rules are the automated detection engine of Sentinel. Without them, Sentinel is just a log storage system. This rule transforms the raw Syslog data into actionable security alerts.
 
-![Analytics Rule General Tab](./07-analytics-rule-general.png)
+![Analytics Rule General Tab](./screenshots/07-analytics-rule-general.png)
 > Analytics rule configuration showing name, severity (High), description, and MITRE ATT&CK mapping (T1110.001).
 
 ---
@@ -125,7 +125,7 @@ Syslog
 
 **Why threshold of 10:** Normal SSH authentication might fail once or twice (mistyped password). 10 failures in 5 minutes from the same source is statistically anomalous and indicates automated brute force activity.
 
-![Analytics Rule Query](./08-analytics-rule-query-results.png)
+![Analytics Rule Query](./screenshots/08-analytics-rule-query-results.png)
 > KQL query results showing failed SSH attempts summarized by 5-minute bins. Query returns results confirming the detection logic works against real attack data.
 
 ---
@@ -133,7 +133,7 @@ Syslog
 ### Step 9 — Analytics Rule Created
 The analytics rule is saved and activated. It will now run every 5 minutes, automatically scanning incoming Syslog data for SSH brute force patterns.
 
-![Analytics Rule Created](./09-analytics-rule-created.png)
+![Analytics Rule Created](./screenshots/09-analytics-rule-created.png)
 > SSH Brute Force Attack Detected analytics rule active in Sentinel. Rule shows Enabled status and will run every 5 minutes.
 
 ---
@@ -141,7 +141,7 @@ The analytics rule is saved and activated. It will now run every 5 minutes, auto
 ### Step 10 — Brute Force KQL Summary
 A KQL query summarizes the brute force attack showing total attempt count, source IP, and targeted hostname.
 
-![Brute Force Summary KQL](./10-brute-force-summary-kql.png)
+![Brute Force Summary KQL](./screenshots/10-brute-force-summary-kql.png)
 > KQL query summarizing SSH brute force — 260 total failed attempts from 10.0.0.100 against ronak endpoint confirmed.
 
 ---
@@ -154,7 +154,7 @@ Within 90 minutes of the attack, the analytics rule fires and Sentinel automatic
 - An incident is a case created from one or more grouped alerts
 - SOC analysts work incidents, not individual alerts
 
-![Incident Generated](./11-incident-generated.png)
+![Incident Generated](./screenshots/11-incident-generated.png)
 > Microsoft Sentinel Incidents page showing auto-generated Incident ID 1 — SSH Brute Force Attack Detected — High severity — Active status.
 
 ---
@@ -162,7 +162,7 @@ Within 90 minutes of the attack, the analytics rule fires and Sentinel automatic
 ### Step 12 — Incident Details
 Opening the incident reveals the full attack context — alert count, activity timeline, entities involved, and the analytics rule that triggered it.
 
-![Incident Details](./12-incident-details.png)
+![Incident Details](./screenshots/12-incident-details.png)
 > Incident details showing attack timeline, 2 active alerts, entities (attacker IP 10.0.0.100, target ronak), and linked analytics rule.
 
 ---
@@ -172,7 +172,7 @@ The incident is assigned to analyst Ronak Mishra and status is changed to In Pro
 
 **Why this matters:** Incident assignment and status tracking is how SOC teams manage their workload. In real environments, incidents are assigned based on analyst availability, expertise, and severity. Tracking status ensures nothing falls through the cracks.
 
-![Incident Assigned](./13-incident-assigned.png)
+![Incident Assigned](./screenshots/13-incident-assigned.png)
 > Incident ID 1 assigned to Ronak Mishra. Status changed to In Progress. Formal incident response workflow initiated.
 
 ---

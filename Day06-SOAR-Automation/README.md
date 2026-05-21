@@ -48,7 +48,7 @@ This rule acts as the connector between the detection (analytics rule) and the r
 
 **Why this matters:** Automation rules are the bridge between detection and response. They remove the human delay from routine incident response, ensuring consistent and immediate action every time a known threat pattern is detected.
 
-![Automation Rule Created](./01-automation-rule-created.png)
+![Automation Rule Created](./screenshots/01-automation-rule-created.png)
 > Sentinel Automation Rules page showing Auto-Respond to SSH Brute Force rule active. Rule configured to trigger Sentinel-Block-IP-Playbook when SSH Brute Force incident is created.
 
 ---
@@ -72,7 +72,7 @@ UFW on Ubuntu endpoint immediately.
 
 **Why this matters:** Every action taken during incident response must be documented. Automated comments create a timestamped audit trail showing exactly what the playbook did and when, which is essential for compliance, post-incident review, and SOC reporting.
 
-![Playbook Logic App](./02-playbook-logic-app.png)
+![Playbook Logic App](./screenshots/02-playbook-logic-app.png)
 > Azure Logic App Designer showing Sentinel-Block-IP-Playbook workflow. Microsoft Sentinel incident trigger connected to Add comment to incident action. Both steps visible with configuration details.
 
 ---
@@ -87,7 +87,7 @@ The trigger succeeding confirms the playbook is correctly connected to Sentinel 
 
 **Why this matters:** Testing automation before relying on it in production is essential. A playbook that fails silently provides no protection. The run history in Logic Apps provides full visibility into every execution, every input, and every output — essential for debugging and auditing.
 
-![Automation Triggered](./03-automation-triggered.png)
+![Automation Triggered](./screenshots/03-automation-triggered.png)
 > Logic App run history showing Sentinel-Block-IP-Playbook execution. Trigger (Microsoft Sentinel incident) shows Succeeded with green checkmark. Workflow confirmed operational.
 
 ---

@@ -50,7 +50,7 @@ SecurityEvent
 
 **Results from lab:** ronakmishra account showed 14 failed logons from 10.0.0.100 — consistent with the RDP brute force simulation from Day 4.
 
-![Hunting Query — Failed Logons](./01-hunting-query-failed-logons.png)
+![Hunting Query — Failed Logons](./screenshots/01-hunting-query-failed-logons.png)
 > Custom hunting query results showing failed logon summary by account. ronakmishra account shows 14 failures from 10.0.0.100 — consistent with RDP brute force activity.
 
 ---
@@ -77,7 +77,7 @@ SecurityEvent
 
 **Results from lab:** whoami, ipconfig, and net user executions from Day 4 simulation confirmed in results.
 
-![Hunting Query — Process Creation](./02-hunting-query-process-creation.png)
+![Hunting Query — Process Creation](./screenshots/02-hunting-query-process-creation.png)
 > Custom hunting query showing suspicious process creation events. whoami, ipconfig, and net user commands visible with full command line and account context.
 
 ---
@@ -108,7 +108,7 @@ SecurityEvent
 
 **Results from lab:** 179 EventID 4672 events returned — primarily NT AUTHORITY\SYSTEM normal system operations, confirming the baseline and demonstrating the query catches all privilege assignment activity.
 
-![Hunting Query — Privilege Escalation](./03-hunting-query-privilege-escalation.png)
+![Hunting Query — Privilege Escalation](./screenshots/03-hunting-query-privilege-escalation.png)
 > Custom hunting query returning 179 privilege escalation events. EventID 4672 (special privileges assigned) visible with account and computer context. Baseline established for anomaly detection.
 
 ---
@@ -134,7 +134,7 @@ Syslog
 
 **MITRE ATT&CK:** T1082 — System Information Discovery
 
-![Hunting Query — Linux Recon](./04-hunting-query-linux-recon.png)
+![Hunting Query — Linux Recon](./screenshots/04-hunting-query-linux-recon.png)
 > Custom hunting query scanning Syslog for Linux reconnaissance commands. Query ready to detect post-exploitation discovery activity on Ubuntu endpoint.
 
 ---
@@ -142,7 +142,7 @@ Syslog
 ### Step 5 — All Custom Hunting Queries Saved
 All four custom hunting queries are saved in Sentinel's Hunting library. They appear alongside the built-in Microsoft hunting queries and can be run on demand by any SOC analyst investigating suspicious activity.
 
-![Saved Hunting Queries](./05-saved-hunting-queries.png)
+![Saved Hunting Queries](./screenshots/05-saved-hunting-queries.png)
 > Sentinel Hunting page showing all four custom queries saved — Failed Logon Summary by Account, Suspicious Process Creation on Windows, Privilege Escalation Detection, and Linux Recon Detection. All available for on-demand hunting.
 
 ---
