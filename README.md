@@ -14,7 +14,7 @@ This is not a guided lab or a walkthrough — every component was configured man
 |----------------------|----------|
 | How the lab was set up | [Day 1](#day-1----environment-setup--windows-endpoint) |
 | Multi-endpoint onboarding + first attack | [Day 2](#day-2----multi-endpoint-onboarding--attack-simulation) |
-| Incident response investigation | [Day 3](#day-3----threat-hunting--incident-response) + [IR Report](./Day03/IR-2026-001-SSH-Brute-Force.docx) |
+| Incident response investigation | [Day 3](#day-3----threat-hunting--incident-response) + [IR Report](./Day03/IR-2026-001-SSH-Brute-Force.pdf) |
 | Windows attack detection | [Day 4](#day-4----windows-attack-simulation) |
 | KQL threat hunting queries | [Day 5](#day-5----kql-threat-hunting) |
 | SOAR automation playbook | [Day 6](#day-6----soar-automation) |
@@ -86,7 +86,7 @@ Microsoft Azure
 - Confirmed no successful authentication
 - Contained attacker IP via UFW: `sudo ufw deny from 10.0.0.100 to any port 22`
 - Confirmed block — Kali SSH connection timed out
-- Wrote incident report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.docx)
+- Wrote incident report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
 
 ### Day 4 — Windows Attack Simulation
 - Ran Nmap from Kali against Windows VM — discovered ports 445 (SMB) and 3389 (RDP) open
@@ -238,7 +238,7 @@ Syslog
 - 05:50 UTC — Containment: `sudo ufw deny from 10.0.0.100 to any port 22`
 - 05:52 UTC — Block confirmed, SSH from Kali timed out
 
-Full report: [IR-2026-001-SSH-Brute-Force.md.docx](./Day03/IR-2026-001-SSH-Brute-Force.docx)
+Full report: [IR-2026-001-SSH-Brute-Force.md.docx](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
 
 ---
 
@@ -288,5 +288,5 @@ Full report: [IR-2026-001-SSH-Brute-Force.md.docx](./Day03/IR-2026-001-SSH-Brute
 **Ronak Mishra**
 - Portfolio: [ronakmishra28.github.io](https://ronakmishra28.github.io)
 - Blog: [ronakonweb.medium.com](https://ronakonweb.medium.com)
-- LinkedIn: [www.linkedin.com/in/ronakmishra/](https://www.linkedin.com/in/ronakmishra/)
+- LinkedIn: [www.linkedin.com/in/ronakmishra/](https://www.linkedin.com/in/ronakmishra)
 - Certifications: SC-200 | CompTIA Security+ | ISC2 CC
