@@ -238,7 +238,7 @@ Syslog
 - 05:50 UTC — Containment: `sudo ufw deny from 10.0.0.100 to any port 22`
 - 05:52 UTC — Block confirmed, SSH from Kali timed out
 
-Full report: [IR-2026-001-SSH-Brute-Force.md.docx](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
+Full report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
 
 ---
 
