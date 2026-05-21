@@ -14,13 +14,13 @@ This is not a guided lab or a walkthrough — every component was configured man
 |----------------------|----------|
 | How the lab was set up | [Day 1](#day-1----environment-setup--windows-endpoint) |
 | Multi-endpoint onboarding + first attack | [Day 2](#day-2----multi-endpoint-onboarding--attack-simulation) |
-| Incident response investigation | [Day 3](#day-3----threat-hunting--incident-response) + [IR Report](./Day03/IR-2026-001-SSH-Brute-Force.pdf) |
+| Incident response investigation | [Day 3](#day-3----threat-hunting--incident-response) + [IR Report](./Day03-Threat-Hunting-Incident-Response/IR-2026-001-SSH-Brute-Force.pdf) |
 | Windows attack detection | [Day 4](#day-4----windows-attack-simulation) |
 | KQL threat hunting queries | [Day 5](#day-5----kql-threat-hunting) |
 | SOAR automation playbook | [Day 6](#day-6----soar-automation) |
 | All KQL queries in one place | [Analytics Rules](#analytics-rules) + [Hunting Queries](#threat-hunting-queries) |
 | MITRE ATT&CK coverage | [MITRE ATT&CK Coverage](#mitre-attck-coverage) |
-| Screenshots | [Day01](./Day01/) through [Day07](./Day07/) |
+| Screenshots | [Day01](./Day01-Environment-Setup/) through [Day07](./Day07-SOC-Dashboard/) |
 
 ---
 
@@ -86,7 +86,7 @@ Microsoft Azure
 - Confirmed no successful authentication
 - Contained attacker IP via UFW: `sudo ufw deny from 10.0.0.100 to any port 22`
 - Confirmed block — Kali SSH connection timed out
-- Wrote incident report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
+- Wrote incident report: [IR-2026-001-SSH-Brute-Force](./Day03-Threat-Hunting-Incident-Response/IR-2026-001-SSH-Brute-Force.pdf)
 
 ### Day 4 — Windows Attack Simulation
 - Ran Nmap from Kali against Windows VM — discovered ports 445 (SMB) and 3389 (RDP) open
@@ -238,7 +238,7 @@ Syslog
 - 05:50 UTC — Containment: `sudo ufw deny from 10.0.0.100 to any port 22`
 - 05:52 UTC — Block confirmed, SSH from Kali timed out
 
-Full report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.pdf)
+Full report: [IR-2026-001-SSH-Brute-Force](./Day03-Threat-Hunting-Incident-Response/IR-2026-001-SSH-Brute-Force.pdf)
 
 ---
 
@@ -273,13 +273,13 @@ Full report: [IR-2026-001-SSH-Brute-Force](./Day03/IR-2026-001-SSH-Brute-Force.p
 
 | Day | Folder | Contents |
 |-----|--------|----------|
-| Day 1 | [Day01/](./Day01/) | Workspace setup, Arc connection, AMA install, DCR, first logs, KQL queries |
-| Day 2 | [Day02/](./Day02/) | Ubuntu onboarding, Hydra attack detection, analytics rule, incident creation |
-| Day 3 | [Day03/](./Day03/) | Attack timeline, IR forensics, containment, IR report |
-| Day 4 | [Day04/](./Day04/) | Nmap scan, RDP brute force, recon detection, 3 analytics rules |
-| Day 5 | [Day05/](./Day05/) | 4 custom threat hunting queries |
-| Day 6 | [Day06/](./Day06/) | SOAR playbook, automation rule, triggered response |
-| Day 7 | [Day07/](./Day07/) | SOC dashboard — 6 sections, live KQL visualizations |
+| Day 1 | [Day01/](./Day01-Environment-Setup/) | Workspace setup, Arc connection, AMA install, DCR, first logs, KQL queries |
+| Day 2 | [Day02/](./Day02-Multi-Endpoint-Attack-Simulation/) | Ubuntu onboarding, Hydra attack detection, analytics rule, incident creation |
+| Day 3 | [Day03/](./Day03-Threat-Hunting-Incident-Response/) | Attack timeline, IR forensics, containment, IR report |
+| Day 4 | [Day04/](./Day04-Windows-Attack-Simulation/) | Nmap scan, RDP brute force, recon detection, 3 analytics rules |
+| Day 5 | [Day05/](./Day05-KQL-Threat-Hunting/) | 4 custom threat hunting queries |
+| Day 6 | [Day06/](./Day06-SOAR-Automation/) | SOAR playbook, automation rule, triggered response |
+| Day 7 | [Day07/](./Day07-SOC-Dashboard/) | SOC dashboard — 6 sections, live KQL visualizations |
 
 ---
 
