@@ -14,7 +14,7 @@ This is not a guided lab or a walkthrough — every component was configured man
 |----------------------|----------|
 | How the lab was set up | [Day 1](./Day01-Environment-Setup/) |
 | Multi-endpoint onboarding + first attack | [Day 2](./Day02-Multi-Endpoint-Attack-Simulation/) |
-| Incident response investigation | [Day 3](./Day03-Threat-Hunting-Incident-Response/) + [IR Report](./Day03-Threat-Hunting-Incident-Response/screenshots/IR-2026-001-SSH-Brute-Force.pdf) |
+| Incident response investigation | [Day 3](./Day03-Threat-Hunting-Incident-Response/) + [IR Report](./Day03-Threat-Hunting-Incident-Response/IR-2026-001-SSH-Brute-Force.pdf) |
 | Windows attack detection | [Day 4](./Day04-Windows-Attack-Simulation/) |
 | KQL threat hunting queries | [Day 5](./Day05-KQL-Threat-Hunting/) |
 | SOAR automation playbook | [Day 6](./Day06-SOAR-Automation/) |
